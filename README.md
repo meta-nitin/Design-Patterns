@@ -1,3 +1,14 @@
+# Design Patterns
+Design patterns are reusable solutions to commonly occurring problems in software design. They represent best practices and proven solutions to design and implementation challenges faced by software developers. Design patterns provide a structured approach for designing and organizing software systems, promoting code reusability, flexibility, maintainability, and scalability.
+
+Design patterns encapsulate expert knowledge and experience in software design, allowing developers to leverage established solutions to common problems rather than reinventing the wheel. They serve as guidelines for designing software architectures and help developers create code that is more robust, modular, and adaptable to changes.
+
+There are various types of design patterns, including creational, structural, and behavioral patterns, each addressing different aspects of software design. By understanding and applying design patterns, developers can build software systems that are easier to understand, maintain, and extend over time.
+
+
+## Creational Patterns
+These patterns focus on the process of object creation, providing mechanisms for creating objects in a manner suitable for the situation. Creational patterns deal with object instantiation and typically involve concepts such as abstracting the instantiation process, hiding implementation details, and providing flexibility in object creation.
+
 ### Factory method
 Creational design pattern which solves the problem of creating product objects without specifying their concrete classes.
 
@@ -323,6 +334,11 @@ public class Main {
 ```
 
 ------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+
+
+## Structural Patterns
+Structural patterns deal with the composition of classes or objects, focusing on how classes and objects can be structured to form larger, more complex structures while keeping them flexible and efficient. These patterns aim to simplify the design by identifying simple ways to realize relationships between entities.
 
 ### Adapter
 Structural design pattern, which allows incompatible objects to collaborate. An Adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected directly. Note that it is similar to bridge design pattern - bridge is up-front strategy whereas adapter is helpful in existing application.
@@ -763,6 +779,11 @@ public class Main {
 ```
 
 ------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+
+
+## Behavioral Patterns
+Behavioral patterns focus on how objects interact and communicate with each other, defining the responsibilities and interactions between objects to achieve specific functionalities. These patterns emphasize communication, collaboration, and the distribution of behavior among objects.
 
 ### Chain of Responsibility
 Behavioral design pattern that lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
