@@ -12,6 +12,10 @@ These patterns focus on the process of object creation, providing mechanisms for
 ### Factory method
 Creational design pattern which solves the problem of creating product objects without specifying their concrete classes.
 
+Usage - 
+1. When you don’t know beforehand the exact types and dependencies of the objects your code should work with.
+2. When you want to save system resources by reusing existing objects instead of rebuilding them each time.
+
 ```java
 // Library classes
 abstract class Vehicle {
@@ -62,6 +66,10 @@ public class GFG {
 
 ### Abstract factory method
 Same thing as factory method but for group of related objects. Creational design pattern, which solves the problem of creating entire product families without specifying their concrete classes. In simpler terms the Abstract Factory Pattern is a way of organizing how you create groups of objects that are related to each other.
+
+Usage -
+1. When your code needs to work with various families of related products, but you don’t want it to depend on the concrete classes of those products
+2. If you need to allow for variations or extensions in the products or their families
 
 ```java
 // Library classes
@@ -146,6 +154,10 @@ public class GFG {
 ### Builder
 Creational design pattern, which allows constructing complex objects step by step.
 
+Usage -
+1. To construct Composite trees or other complex objects
+2. to get rid of a “telescoping constructor”
+
 ```java
 public class Vehicle {
 
@@ -214,7 +226,12 @@ public class BuilderPatternDemo {
 ------------------------------------------------------------------------------------------------------------------
 
 ### Prototype
-Creational design pattern that allows cloning objects, even complex ones, without coupling to their specific classes, i.e, it enables the creation of new objects by copying an existing object
+Creational design pattern that allows cloning objects, even complex ones, without coupling to their specific classes, i.e, it enables the creation of new objects by copying an existing object.
+
+Usage -
+1. When you want to reduce the number of subclasses that only differ in the way they initialize their respective objects
+2. When creating objects is more expensive or complex than copying existing ones.
+3. Wwhen you want to reduce the overhead of initializing an object
 
 ```java
 abstract class Vehicle {
@@ -291,8 +308,12 @@ public class Main {
 
 ### Singleton
 Creational design pattern, which ensures that only one object of its kind exists and provides a single point of access to it for any other code. [Must read the article https://www.baeldung.com/java-bill-pugh-singleton-implementation - this is for both multithreading & eager loading]
+
 Scenarios -
 	1.	Below example is of lazy loading. It can be eagerly loaded - implementation by making the instance variable static final and inside private constructor just do -> return new Singleton(). And in the static getInstance method return the instance.
+ 
+Usage -
+1. When a class in your program should have just a single instance available to all clients, e.g database connection or global configuration settings
 
 ```java
 public class Vehicle {
@@ -342,9 +363,11 @@ Structural patterns deal with the composition of classes or objects, focusing on
 
 ### Adapter
 Structural design pattern, which allows incompatible objects to collaborate. An Adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected directly. Note that it is similar to bridge design pattern - bridge is up-front strategy whereas adapter is helpful in existing application.
+
 Object Type adapter (Using composition) -
 	1.	Use this when Bicycle class is a third party or client side class which is not modifiable, in that case it is better to have the adaptee as an object
 	2.	Use this when you want to adapt multiple classes to same target interface
+
 Class Type adapter (Using inheritance) -
 	1.	Use when Bicycle class or adaptee class is modifiable.
 	2.	When you want to minimize number of objects.
@@ -416,6 +439,11 @@ class BicycleToVehicleAdapter2 extends Bicycle implements Vehicle {
 Structural design pattern that divides business logic or huge class into separate class hierarchies that can be developed independently. It separate the abstraction from its implementation, so that the two can vary independently. One of these hierarchies (often called the Abstraction) will get a reference to an object of the second hierarchy (Implementation). Always remember it has 2 parts - abstraction & implementation.
 Bridge design pattern can be used when both abstraction and implementation can have different hierarchies independently and we want to hide the implementation from the client application.
 
+Usage -
+1. When you want to divide and organize a monolithic class that has several variants of some functionality
+2. If you need to be able to switch implementations at runtime
+3. When you need to extend a class in several orthogonal (independent) dimensions
+
 ```java
 // Implementor
 interface Engine {
@@ -481,7 +509,11 @@ public class Main {
 ------------------------------------------------------------------------------------------------------------------
 
 ### Composite
-Structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object. The composite pattern is meant to allow treating individual objects and compositions of objects, or “composites” in the same way. 
+Structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object. The composite pattern is meant to allow treating individual objects and compositions of objects, or “composites” in the same way.
+
+Usage -
+1. When you have to implement a tree-like object structure
+2. If individual and composite objects needs to be treated in the same way
 
 ```java
 // Base component
@@ -542,8 +574,10 @@ public class Main {
 
 ### Decorator
 Structural pattern that allows adding new behaviors to objects dynamically by placing them inside special wrapper objects, called decorators.
-Use the Decorator pattern when you need to be able to assign extra behaviors to objects at runtime without breaking the code that uses these objects.
 The disadvantage of decorator design pattern is that it uses a lot of similar kind of objects (decorators).
+
+Usage -
+1. When you need to be able to assign extra behaviors to objects at runtime without breaking the code that uses these objects
 
 ```java
 // Component
@@ -613,6 +647,10 @@ public class Main {
 Structural design pattern that provides a simplified (but limited) interface to a complex system of classes, library or framework. Simply put, a facade encapsulates a complex subsystem behind a simple interface. It hides much of the complexity and makes the subsystem easy to use. Also, if we need to use the complex subsystem directly, we still can do that; we aren’t forced to use the facade all the time. E.g - call the customer care, he will guide through everything like balance check, complaint, new plans, stop/start service, recharge etc. Basically, it means one stop shop for everything user wants to do, but it is encapsulated behind the facade, user gets his job done in simple terms.
 Disadvantages- Being simple in implementation, sometimes the pattern can be overused in simple scenarios, which will lead to redundant implementations.
 
+Usage -
+1. When you need to have a limited but straightforward interface to a complex subsystem
+2. 
+
 ```java
 class Engine {
   public void start() {
@@ -664,10 +702,14 @@ public class Main {
 
 ### Flyweight
 Structural design pattern that allows programs to support vast quantities of objects by keeping their memory consumption low. The pattern achieves it by sharing parts of object state between multiple objects. In other words, the Flyweight saves RAM by caching the same data used by different objects.
+
 Before we apply flyweight design pattern, we need to consider following factors:
 	1.	The number of Objects to be created by application should be huge.
 	2.	The object creation is heavy on memory and it can be time consuming too.
 	3.	The object properties can be divided into intrinsic and extrinsic properties. Intrinsic properties make the Object unique whereas extrinsic properties are set by client code and used to perform different operations
+
+Usage -
+1. Only when your program must support a huge number of objects which barely fit into available RAM
 
 ```java
 // Flyweight
@@ -729,10 +771,11 @@ public class Main {
 
 ### Proxy
 Structural design pattern that provides an object that acts as a substitute for a real service object used by a client. A proxy receives client requests, does some work (access control, caching, etc.) and then passes the request to a service object.
-When to use the Proxy pattern:
-	1.	When we want a simplified version of a complex or heavy object. In this case, we may represent it with a skeleton object which loads the original object on demand, also called as lazy initialization. This is known as the Virtual Proxy
-	2.	When the original object is present in different address space, and we want to represent it locally. We can create a proxy which does all the necessary boilerplate stuff like creating and maintaining the connection, encoding, decoding, etc., while the client accesses it as it was present in their local address space. This is called the Remote Proxy
-	3.	When we want to add a layer of security to the original underlying object to provide controlled access based on access rights of the client. This is called Protection Proxy
+
+Usage -
+1. When we want a simplified version of a complex or heavy object. In this case, we may represent it with a skeleton object which loads the original object on demand, also called as lazy initialization. This is known as the Virtual Proxy
+2. When the original object is present in different address space, and we want to represent it locally. We can create a proxy which does all the necessary boilerplate stuff like creating and maintaining the connection, encoding, decoding, etc., while the client accesses it as it was present in their local address space. This is called the Remote Proxy
+3. When we want to add a layer of security to the original underlying object to provide controlled access based on access rights of the client. This is called Protection Proxy
 
 ```java
 // Subject
@@ -787,9 +830,10 @@ Behavioral patterns focus on how objects interact and communicate with each othe
 
 ### Chain of Responsibility
 Behavioral design pattern that lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
+
 Usage -
-	1.	Use the Chain of Responsibility pattern when your program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.
-	2.	Use the pattern when it’s essential to execute several handlers in a particular order.
+1. When your program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.
+2. When it’s essential to execute several handlers in a particular order.
 
 ```java
 // Handler interface
@@ -897,8 +941,15 @@ public class Main {
 
 ### Command
 Simply put, the pattern intends to encapsulate in an object all the data required for performing a given action (command), including what method to call, the method’s arguments, and the object to which the method belongs.
+
 Process - In command pattern, the request is sent to the invoker and invoker pass it to the encapsulated command object. Command object passes the request to the appropriate method of Receiver to perform the specific action. (think of the implementation as multi-level composition). To remember the pattern, remember the word multi-level composition.
-Example - Hotel. You go to hotel, waiter (invoker) comes to take the order (request) and creates a order note (command object). This order note is then sent to kitchen where it is first read by chef to prepare the food. Once coocked, the chef leaves it on shelf on a tray with the order note which is then taken up by another waiter to see if order note things are proper in the tray and then take it back to customer. 
+
+Example - Hotel. You go to hotel, waiter (invoker) comes to take the order (request) and creates a order note (command object). This order note is then sent to kitchen where it is first read by chef to prepare the food. Once coocked, the chef leaves it on shelf on a tray with the order note which is then taken up by another waiter to see if order note things are proper in the tray and then take it back to customer.
+
+Usage -
+1. When you want to queue operations, schedule their execution
+2. When you want to decouple the sender (requester) of a request from the object that performs the request
+3. If you need to support undo and redo operations in your application, the Command Pattern is a good fit
 
 ```java
 // Receiver interface
@@ -969,10 +1020,11 @@ public class Main {
 
 ### Iterator
 Behavioral design pattern that lets you traverse elements of an aggregate object without exposing its underlying representation (list, stack, tree, etc.).
+
 Usage -
-	1.	when your collection has a complex data structure under the hood, but you want to hide its complexity from clients
-	2.	Use the pattern to reduce duplication of the traversal code across your app
-	3.	when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand
+1. When your collection has a complex data structure under the hood, but you want to hide its complexity from clients
+2. Use the pattern to reduce duplication of the traversal code across your app
+3. When you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand
 
 ```java
 // Vehicle class
@@ -1051,10 +1103,11 @@ public class Main {
 
 ### Interpreter
 Defines a grammatical representation for a language and provides an interpreter to interpret sentences in that language. It allows you to create a domain-specific language and interpret expressions written in that language. In essence, the Interpreter pattern involves defining a grammar for the language and implementing interpreters to evaluate expressions based on that grammar. This pattern is useful when you have a language that can be represented in a formal grammar and you want to interpret expressions in that language.
+
 Usage -
-	1.	When dealing with domain-specific languages
-	2.	When you have a grammar to interpret
-	3.	When adding new operations/commands is frequent
+1. When dealing with domain-specific languages
+2. When you have a grammar to interpret
+3. When adding new operations/commands is frequent
 
 ```java
 // Abstract expression interface
@@ -1126,10 +1179,11 @@ public class Main {
 
 ### Mediator
 Lets you reduce chaotic dependencies between objects. The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object. It defines an object, the mediator, to centralize communication between various components or objects in a system.
+
 Usage -
-	1.	Use the Mediator pattern when it’s hard to change some of the classes because they are tightly coupled to a bunch of other classes.
-	2.	When you want a Centralized Control
-	3.	if we have to deal with a set of objects that are tightly coupled (not too tightly though) and hard to maintain.
+1. When it’s hard to change some of the classes because they are tightly coupled to a bunch of other classes.
+2. When you want a Centralized Control
+3. If we have to deal with a set of objects that are tightly coupled (not too tightly though) and hard to maintain.
 
 ```java
 // Mediator interface
@@ -1221,10 +1275,11 @@ public class Main {
 
 ### Memento
 Lets you save and restore the previous state of an object without revealing the details of its implementation. The Memento makes the object itself responsible for creating a snapshot of its state. No other object can read the snapshot, making the original object’s state data safe and secure.
+
 Usage -
-	1.	when you want to produce snapshots of the object’s state to be able to restore a previous state of the object
-	2.	When you need to implement an undo feature in your application that allows users to revert changes made to an object’s state
-	3.	When you need to rollback changes to an object’s state in case of errors or exceptions, such as in database transactions
+1. When you want to produce snapshots of the object’s state to be able to restore a previous state of the object
+2. When you need to implement an undo feature in your application that allows users to revert changes made to an object’s state
+3. When you need to rollback changes to an object’s state in case of errors or exceptions, such as in database transactions
 
 ```java
 // Memento class
@@ -1344,9 +1399,10 @@ public class Main {
 
 ### Observer (Pub-Sub)
 Lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing. It defines a one-to-many dependency between objects so that when one object (the subject) changes state, all its dependents (observers) are notified and updated automatically.
-Usage --
-	1.	when some objects in your app must observe others, but only for a limited time or in specific cases
-	2.	often used in event handling systems
+
+Usage -
+1. When some objects in your app must observe others, but only for a limited time or in specific cases
+2. Often used in event handling systems
 
 ```java
 // Subscriber interface
@@ -1422,6 +1478,7 @@ public class Main {
 
 ### State
 Lets an object alter its behavior when its internal state changes. It appears as if the object changed its class. It achieves this by encapsulating the object’s behavior within different state objects, and the object itself dynamically switches between these state objects depending on its current state.
+
 Usage -
 1. If your object exists in several states (e.g., On/Off, Open/Closed, Started/Stopped), and each state dictates unique behaviors, the State pattern can encapsulate this logic effectively.
 2. When conditional statements (if-else or switch-case) become extensive and complex within your object, the State pattern helps organize and separate state-specific behavior into individual classes
@@ -1504,8 +1561,9 @@ public class Main {
 
 ### Strategy
 Lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable. It defines a family of algorithms, encapsulates each one, and makes them interchangeable, allowing clients to switch algorithms dynamically without altering the code structure.
+
 Usage -
-1. when you want to use different variants of an algorithm within an object.
+1. When you want to use different variants of an algorithm within an object.
 2. When you need to dynamically select and switch between different algorithms at runtime based on user preferences
 
 ```java
@@ -1574,9 +1632,10 @@ public class Main {
 
 ### Template Method
 Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure. It It promotes code reuse by encapsulating the common algorithmic structure in the superclass while allowing subclasses to provide concrete implementations for certain steps, thus enabling customization and flexibility.
+
 Usage -
-1. when you want to let clients extend only particular steps of an algorithm, but not the whole algorithm or its structure.
-2. when you have several classes that contain almost identical algorithms with some minor differences. 
+1. When you want to let clients extend only particular steps of an algorithm, but not the whole algorithm or its structure.
+2. When you have several classes that contain almost identical algorithms with some minor differences. 
 
 ```java
 // Abstract class defining the template method
@@ -1652,8 +1711,9 @@ public class Main {
 
 ### Visitor
 Lets you separate algorithms from the objects on which they operate. It is used when we have to perform an operation on a group of similar kind of Objects. With the help of visitor pattern, we can move the operational logic from the objects to another class.
+
 Usage -
-1. when you need to perform an operation on all elements of a complex object structure.
+1. When you need to perform an operation on all elements of a complex object structure.
 
 ```java
 // Element interface
