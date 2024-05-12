@@ -43,12 +43,14 @@ public class GFG {
     Vehicle fourWheeler = vehicleFactory.createVehicle("FOURWHEELER");
     fourWheeler.printVehicle();
   }
-}```
+}
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
 Abstract factory method -- Same thing as factory method but for group of related objects. Creational design pattern, which solves the problem of creating entire product families without specifying their concrete classes. In simpler terms the Abstract Factory Pattern is a way of organizing how you create groups of objects that are related to each other.
 
+```java
 // Library classes
 abstract class Vehicle {
   public abstract void printVehicle();
@@ -124,11 +126,13 @@ public class GFG {
     fourWheelerEngine.printEngine();
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
 Builder -- creational design pattern, which allows constructing complex objects step by step.
 
+```java
 public class Vehicle {
 
   // Required parameters
@@ -191,11 +195,13 @@ public class BuilderPatternDemo {
     System.out.println(bike.toString());
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
 Prototype -- creational design pattern that allows cloning objects, even complex ones, without coupling to their specific classes, i.e, it enables the creation of new objects by copying an existing object
 
+```java
 abstract class Vehicle {
   protected String vehicleType;
   protected String color;
@@ -264,6 +270,7 @@ public class Main {
     clonedFourWheeler.printVehicle(); // This is a Blue four wheeler vehicle
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -271,6 +278,7 @@ Singleton -- creational design pattern, which ensures that only one object of it
 Scenarios -
 	1.	Below example is of lazy loading. It can be eagerly loaded - implementation by making the instance variable static final and inside private constructor just do -> return new Singleton(). And in the static getInstance method return the instance.
 
+```java
 public class Vehicle {
   private static Vehicle instance;
   private String color;
@@ -307,6 +315,7 @@ public class Main {
     anotherVehicle.printVehicle(); // This is still a Red vehicle
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -319,6 +328,7 @@ Class Type adapter (Using inheritance) -
 	2.	When you want to minimize number of objects.
 	3.	Straigthforward
 
+```java
 // Existing class
 interface Vehicle {
   void start();
@@ -376,12 +386,14 @@ class BicycleToVehicleAdapter2 extends Bicycle implements Vehicle {
   brakes();
  }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
 Bridge -- structural design pattern that divides business logic or huge class into separate class hierarchies that can be developed independently. It separate the abstraction from its implementation, so that the two can vary independently. One of these hierarchies (often called the Abstraction) will get a reference to an object of the second hierarchy (Implementation). Always remember it has 2 parts - abstraction & implementation.
 Bridge design pattern can be used when both abstraction and implementation can have different hierarchies independently and we want to hide the implementation from the client application.
 
+```java
 // Implementor
 interface Engine {
   void startEngine();
@@ -441,11 +453,13 @@ public class Main {
     vehicle2.start(); // Bike Electric Engine started
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
 Composite -- structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object. The composite pattern is meant to allow treating individual objects and compositions of objects, or “composites” in the same way. 
 
+```java
 // Base component
 abstract class VehiclePart {
   void printPart() {}
@@ -498,6 +512,7 @@ public class Main {
     vehicle.printPart(); // Engine Wheel
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -505,6 +520,7 @@ Decorator -- structural pattern that allows adding new behaviors to objects dyna
 Use the Decorator pattern when you need to be able to assign extra behaviors to objects at runtime without breaking the code that uses these objects.
 The disadvantage of decorator design pattern is that it uses a lot of similar kind of objects (decorators).
 
+```java
 // Component
 abstract class Vehicle {
   abstract String getDescription();
@@ -564,12 +580,14 @@ public class Main {
     System.out.println(car.getDescription() + " $" + car.getCost()); // Car, with sunroof, with navigation $10800.0
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
 Facade -- structural design pattern that provides a simplified (but limited) interface to a complex system of classes, library or framework. Simply put, a facade encapsulates a complex subsystem behind a simple interface. It hides much of the complexity and makes the subsystem easy to use. Also, if we need to use the complex subsystem directly, we still can do that; we aren’t forced to use the facade all the time. E.g - call the customer care, he will guide through everything like balance check, complaint, new plans, stop/start service, recharge etc. Basically, it means one stop shop for everything user wants to do, but it is encapsulated behind the facade, user gets his job done in simple terms.
 Disadvantages- Being simple in implementation, sometimes the pattern can be overused in simple scenarios, which will lead to redundant implementations.
 
+```java
 class Engine {
   public void start() {
     System.out.println("Engine started");
@@ -614,6 +632,7 @@ public class Main {
     vehicle.start(); // Engine started Lights turned on Radio playing
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -623,6 +642,7 @@ Before we apply flyweight design pattern, we need to consider following factors:
 	2.	The object creation is heavy on memory and it can be time consuming too.
 	3.	The object properties can be divided into intrinsic and extrinsic properties. Intrinsic properties make the Object unique whereas extrinsic properties are set by client code and used to perform different operations
 
+```java
 // Flyweight
 interface Vehicle {
   void assignDriver(String driverName);
@@ -676,6 +696,7 @@ public class Main {
     vehicle3.move();
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -685,6 +706,7 @@ When to use the Proxy pattern:
 	2.	When the original object is present in different address space, and we want to represent it locally. We can create a proxy which does all the necessary boilerplate stuff like creating and maintaining the connection, encoding, decoding, etc., while the client accesses it as it was present in their local address space. This is called the Remote Proxy
 	3.	When we want to add a layer of security to the original underlying object to provide controlled access based on access rights of the client. This is called Protection Proxy
 
+```java
 // Subject
 interface Vehicle {
   void drive();
@@ -726,6 +748,7 @@ public class Main {
     car2.drive(); // Driver's license is not valid. Cannot drive the car.
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -734,6 +757,7 @@ Usage -
 	1.	Use the Chain of Responsibility pattern when your program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.
 	2.	Use the pattern when it’s essential to execute several handlers in a particular order.
 
+```java
 // Handler interface
 interface VehicleInspector {
   void handle(VehicleCheck check);
@@ -833,6 +857,7 @@ public class Main {
     level1Inspector.handle(check);
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -840,6 +865,7 @@ Command -- Simply put, the pattern intends to encapsulate in an object all the d
 Process - In command pattern, the request is sent to the invoker and invoker pass it to the encapsulated command object. Command object passes the request to the appropriate method of Receiver to perform the specific action. (think of the implementation as multi-level composition). To remember the pattern, remember the word multi-level composition.
 Example - Hotel. You go to hotel, waiter (invoker) comes to take the order (request) and creates a order note (command object). This order note is then sent to kitchen where it is first read by chef to prepare the food. Once coocked, the chef leaves it on shelf on a tray with the order note which is then taken up by another waiter to see if order note things are proper in the tray and then take it back to customer. 
 
+```java
 // Receiver interface
 interface Vehicle {
   void start();
@@ -902,6 +928,7 @@ public class Main {
     vehicleOperator.executeCommand();
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -911,9 +938,7 @@ Usage -
 	2.	Use the pattern to reduce duplication of the traversal code across your app
 	3.	when you want your code to be able to traverse different data structures or when types of these structures are unknown beforehand
 
-import java.util.ArrayList;
-import java.util.List;
-
+```java
 // Vehicle class
 class Vehicle {
   private String name;
@@ -984,6 +1009,7 @@ public class Main {
     }
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -993,6 +1019,7 @@ Usage -
 	2.	When you have a grammar to interpret
 	3.	When adding new operations/commands is frequent
 
+```java
 // Abstract expression interface
 interface Expression {
   int interpret();
@@ -1056,6 +1083,7 @@ public class Main {
     System.out.println("Result of expression 2: " + expression2.interpret()); // Output: 12
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1065,9 +1093,7 @@ Usage -
 	2.	When you want a Centralized Control
 	3.	if we have to deal with a set of objects that are tightly coupled (not too tightly though) and hard to maintain.
 
-import java.util.ArrayList;
-import java.util.List;
-
+```java
 // Mediator interface
 interface TrafficPolice {
   void notify(Vehicle sender, String event);
@@ -1151,6 +1177,7 @@ public class Main {
     car2.stop();
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1160,6 +1187,7 @@ Usage -
 	2.	When you need to implement an undo feature in your application that allows users to revert changes made to an object’s state
 	3.	When you need to rollback changes to an object’s state in case of errors or exceptions, such as in database transactions
 
+```java
 // Memento class
 class VehicleMemento {
   private int speed;
@@ -1271,6 +1299,7 @@ public class Main {
       vehicle.printState();
     }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1279,6 +1308,7 @@ Usage --
 	1.	when some objects in your app must observe others, but only for a limited time or in specific cases
 	2.	often used in event handling systems
 
+```java
 // Subscriber interface
 interface MailSubscriber {
   void receiveMail(String message);
@@ -1346,6 +1376,7 @@ public class Main {
         publisher.notifySubscribers("Check out our latest offers!");
     }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1355,6 +1386,7 @@ Usage -
 2. When conditional statements (if-else or switch-case) become extensive and complex within your object, the State pattern helps organize and separate state-specific behavior into individual classes
 3. If your object transitions between states frequently
 
+```java
 // Context class - Vehicle
 class Vehicle {
     private State state;
@@ -1425,6 +1457,7 @@ public class Main {
        vehicle.start(); // Output: Starting the vehicle...
     }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1433,6 +1466,7 @@ Usage -
 1. when you want to use different variants of an algorithm within an object.
 2. When you need to dynamically select and switch between different algorithms at runtime based on user preferences
 
+```java
 // Strategy interface
 interface SortingStrategy {
   void sort(int[] arr);
@@ -1492,6 +1526,7 @@ public class Main {
     sorter.performSort(arr);
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1500,6 +1535,7 @@ Usage -
 1. when you want to let clients extend only particular steps of an algorithm, but not the whole algorithm or its structure.
 2. when you have several classes that contain almost identical algorithms with some minor differences. 
 
+```java
 // Abstract class defining the template method
 abstract class Vehicle {
   // Template method defining the algorithm for building a vehicle
@@ -1567,6 +1603,7 @@ public class Main {
     bike.assembleVehicle();
   }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -1574,6 +1611,7 @@ Visitor -- lets you separate algorithms from the objects on which they operate. 
 Usage -
 1. when you need to perform an operation on all elements of a complex object structure.
 
+```java
 // Element interface
 interface VehiclePart {
   void accept(ShoppingVisitor visitor);
@@ -1639,3 +1677,4 @@ public class Main {
     System.out.println("Total price of vehicle parts: $" + totalPrice);
   }
 }
+```
