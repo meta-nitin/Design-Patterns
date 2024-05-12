@@ -1,6 +1,7 @@
 Factory method -- creational design pattern which solves the problem of creating product objects without specifying their concrete classes.
 
-```java// Library classes
+```java
+// Library classes
 abstract class Vehicle {
   public abstract void printVehicle();
 }
