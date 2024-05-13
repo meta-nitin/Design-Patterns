@@ -342,7 +342,7 @@ public class EagerSingleton {
      * Not thread-safe - multiple threads may create multiple instances
    - Use case
      * Suitable for scenarios where performance is not a concern and thread safety is not required
-
+       
 ```java
 public class LazySingleton {
     private static LazySingleton instance;
@@ -357,7 +357,6 @@ public class LazySingleton {
     }
 }
 ```
-
 3. **Lazy Initialization with Double-Checked Locking (Thread Safe)**
    - Advantages
      * Thread-safe and efficient due to lazy initialization
@@ -366,7 +365,7 @@ public class LazySingleton {
      * Requires java 5 or higher
    - Use case
      * Suitable for scenarios where lazy initialization is required, and thread safety is important
-
+       
 ```java
 public class ThreadSafeSingleton {
     private static volatile ThreadSafeSingleton instance;
@@ -385,7 +384,6 @@ public class ThreadSafeSingleton {
     }
 }
 ```
-
 4. **Initialization-on-demand Holder idiom (Thread Safe)**
    - Advantages
      * Thread-safe without explicit synchronization
@@ -394,7 +392,7 @@ public class ThreadSafeSingleton {
      * Slightly more complex than eager initialization
    - Use case
      * Suitable for lazy initialization with high performance requirements
-
+       
 ```java
 public class HolderSingleton {
     private HolderSingleton() {}
@@ -408,7 +406,6 @@ public class HolderSingleton {
     }
 }
 ```
-
 5. **Enum Singleton**
    - Advantages
      * Thread-safe and serialization-safe by default
@@ -417,7 +414,7 @@ public class HolderSingleton {
      * Limited flexibility for additional behaviors or inheritance
    - Use case
      * Recommended for simple Singleton scenarios where thread safety and serialization are required.
-
+       
 ```java
 public enum EnumSingleton {
     INSTANCE;
