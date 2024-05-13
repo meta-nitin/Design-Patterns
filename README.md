@@ -314,7 +314,7 @@ Usage -
 
 Below are the ways to implement Singleton -
 
-➤ **Eager Initialization**
+1. **Eager Initialization**
    - Advantages
      * Simple implementation
      * Thread safe by default
@@ -336,7 +336,7 @@ public class EagerSingleton {
 }
 ```
   
-➤ **Lazy initialization**
+2. **Lazy initialization**
    - Advantages
      * Lazy initialization saves resources by creating the instance only when needed
    - Disadvantages
@@ -359,7 +359,7 @@ public class LazySingleton {
 }
 ```
 
-➤ **Lazy Initialization with Double-Checked Locking (Thread Safe)**
+3. **Lazy Initialization with Double-Checked Locking (Thread Safe)**
    - Advantages
      * Thread-safe and efficient due to lazy initialization
    - Disadvantages
@@ -387,7 +387,7 @@ public class ThreadSafeSingleton {
 }
 ```
 
-➤ **Initialization-on-demand Holder idiom (Thread Safe)**
+4. **Initialization-on-demand Holder idiom (Thread Safe)**
    - Advantages
      * Thread-safe without explicit synchronization
      * Lazy initialization and performance are guaranteed
@@ -410,7 +410,7 @@ public class HolderSingleton {
 }
 ```
 
-➤ **Enum Singleton**
+5. **Enum Singleton**
    - Advantages
      * Thread-safe and serialization-safe by default
      * Easiest implementation with built-in support for single instance guarantee
