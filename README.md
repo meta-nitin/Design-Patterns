@@ -335,7 +335,7 @@ public class EagerSingleton {
     }
 }
 ```
-
+  
 2. **Lazy initialization**
    - Advantages
      * Lazy initialization saves resources by creating the instance only when needed
