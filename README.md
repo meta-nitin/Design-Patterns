@@ -386,6 +386,48 @@ public class ThreadSafeSingleton {
 }
 ```
 
+4. Initialization-on-demand Holder idiom (Thread Safe)
+   - Advantages
+     * Thread-safe without explicit synchronization
+     * Lazy initialization and performance are guaranteed
+   - Disadvantages
+     * Slightly more complex than eager initialization
+   - Use case
+     * Suitable for lazy initialization with high performance requirements
+
+```java
+public class HolderSingleton {
+    private HolderSingleton() {}
+
+    private static class SingletonHolder {
+        private static final HolderSingleton INSTANCE = new HolderSingleton();
+    }
+
+    public static HolderSingleton getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
+}
+```
+
+5. Enum Singleton
+   - Advantages
+     * Thread-safe and serialization-safe by default
+     * Easiest implementation with built-in support for single instance guarantee
+   - Disadvantages
+     * Limited flexibility for additional behaviors or inheritance
+   - Use case
+     * Recommended for simple Singleton scenarios where thread safety and serialization are required.
+
+```java
+public enum EnumSingleton {
+    INSTANCE;
+
+    public void someMethod() {
+        // Implementation
+    }
+}
+```
+
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
 
