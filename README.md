@@ -321,7 +321,8 @@ Below are the ways to implement Singleton -
    - Disadvantages
      * May lead to resource wastage if the instance is never used
    - Use case
-     * Use when the Singleton object is lightweight and always needed  
+     * Use when the Singleton object is lightweight and always needed
+       
 ```java
 public class EagerSingleton {
     private static final EagerSingleton instance = new EagerSingleton();
