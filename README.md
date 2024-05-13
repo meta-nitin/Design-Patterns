@@ -308,49 +308,81 @@ public class Main {
 
 ### Singleton
 Creational design pattern, which ensures that only one object of its kind exists and provides a single point of access to it for any other code. [Must read the article https://www.baeldung.com/java-bill-pugh-singleton-implementation - this is for both multithreading & eager loading]
-
-Scenarios -
-	1.	Below example is of lazy loading. It can be eagerly loaded - implementation by making the instance variable static final and inside private constructor just do -> return new Singleton(). And in the static getInstance method return the instance.
  
 Usage -
 1. When a class in your program should have just a single instance available to all clients, e.g database connection or global configuration settings
 
+Below are the ways to implement Singleton -
+
+1. Eager Initialization
+   - Advantages
+     * Simple implementation
+     * Thread safe by default
+   - Disadvantages
+     * May lead to resource wastage if the instance is never used
+   - Use case
+     * Use when the Singleton object is lightweight and always needed
+
 ```java
-public class Vehicle {
-  private static Vehicle instance;
-  private String color;
+public class EagerSingleton {
+    private static final EagerSingleton instance = new EagerSingleton();
 
-  private Vehicle() {
-  }
+    // Private constructor to prevent instantiation from outside
+    private EagerSingleton() {}
 
-  public static Vehicle getInstance() {
-    if (instance == null) {
-      instance = new Vehicle();
-    }
-    return instance;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
-  }
-  public String getColor() {
-    return color;
-  }
-  public void printVehicle() {
-    System.out.println("This is a " + this.color + " vehicle");
-  }
+    public static EagerSingleton getInstance() {
+        return instance;
+    }
 }
+```
+2. Lazy initialization
+   - Advantages
+     * Lazy initialization saves resources by creating the instance only when needed
+   - Disadvantages
+     * Not thread-safe - multiple threads may create multiple instances
+   - Use case
+     * Suitable for scenarios where performance is not a concern and thread safety is not required
+    
+```java
+public class LazySingleton {
+    private static LazySingleton instance;
 
-public class Main {
-  public static void main(String[] args) {
+    private LazySingleton() {}
 
-    Vehicle vehicle = Vehicle.getInstance();
-    vehicle.setColor("Red");
-    vehicle.printVehicle(); // This is a Red vehicle
+    public static LazySingleton getInstance() {
+        if (instance == null) {
+            instance = new LazySingleton();
+        }
+        return instance;
+    }
+}
+```
 
-    Vehicle anotherVehicle = Vehicle.getInstance();
-    anotherVehicle.printVehicle(); // This is still a Red vehicle
-  }
+3. Lazy Initialization with Double-Checked Locking (Thread Safe)
+   - Advantages
+     * Thread-safe and efficient due to lazy initialization
+   - Disadvantages
+     * Complexity due to double-checked locking
+     * Requires java 5 or higher
+   - Use case
+     * Suitable for scenarios where lazy initialization is required, and thread safety is important
+
+```java
+public class ThreadSafeSingleton {
+    private static volatile ThreadSafeSingleton instance;
+
+    private ThreadSafeSingleton() {}
+
+    public static ThreadSafeSingleton getInstance() {
+        if (instance == null) {
+            synchronized (ThreadSafeSingleton.class) {
+                if (instance == null) {
+                    instance = new ThreadSafeSingleton();
+                }
+            }
+        }
+        return instance;
+    }
 }
 ```
 
