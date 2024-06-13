@@ -19,46 +19,46 @@ Usage -
 ```java
 // Library classes
 abstract class Vehicle {
-  public abstract void printVehicle();
+    public abstract void printVehicle();
 }
 
 class TwoWheeler extends Vehicle {
-  public void printVehicle() {
-    System.out.println("I am two wheeler");
-  }
+    public void printVehicle() {
+    System.out.println("I am two wheeler");
+    }
 }
 
 class FourWheeler extends Vehicle {
-  public void printVehicle() {
-    System.out.println("I am four wheeler");
-  }
+    public void printVehicle() {
+        System.out.println("I am four wheeler");
+    }
 }
 
 // Factory Interface
 interface AbstractFactory {
-  Vehicle createVehicle(String vehicleType);
+    Vehicle createVehicle(String vehicleType);
 }
 
 // Concrete Factory
 class VehicleFactory implements VehicleFactory {
-  public Vehicle createVehicle(String vehicleType) {
-	if("TWOWHEELER".equalsIgnoreCase(vehicleType))
-    	return new TwoWheeler();
-	if("FOURWHEELER".equalsIgnoreCase(vehicleType))
-		return new TwoWheeler();
-	return null;
-  }
+    public Vehicle createVehicle(String vehicleType) {
+        if("TWOWHEELER".equalsIgnoreCase(vehicleType))
+        return new TwoWheeler();
+        if("FOURWHEELER".equalsIgnoreCase(vehicleType))
+            return new TwoWheeler();
+        return null;
+    }
 }
 
 // Driver program
 public class GFG {
-  public static void main(String[] args) {
-    VehicleFactory vehicleFactory = new VehicleFactory();
-    Vehicle twoWheeler = vehicleFactory.createVehicle("TWOWHEELER");
-    twoWheeler.printVehicle();
-    Vehicle fourWheeler = vehicleFactory.createVehicle("FOURWHEELER");
-    fourWheeler.printVehicle();
-  }
+    public static void main(String[] args) {
+        VehicleFactory vehicleFactory = new VehicleFactory();
+        Vehicle twoWheeler = vehicleFactory.createVehicle("TWOWHEELER");
+        twoWheeler.printVehicle();
+        Vehicle fourWheeler = vehicleFactory.createVehicle("FOURWHEELER");
+        fourWheeler.printVehicle();
+    }
 }
 ```
 
