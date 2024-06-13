@@ -19,46 +19,46 @@ Usage -
 ```java
 // Library classes
 abstract class Vehicle {
-    public abstract void printVehicle();
+    public abstract void printVehicle();
 }
 
 class TwoWheeler extends Vehicle {
-    public void printVehicle() {
+    public void printVehicle() {
     System.out.println("I am two wheeler");
     }
 }
 
 class FourWheeler extends Vehicle {
-    public void printVehicle() {
-        System.out.println("I am four wheeler");
-    }
+    public void printVehicle() {
+        System.out.println("I am four wheeler");
+    }
 }
 
 // Factory Interface
 interface AbstractFactory {
-    Vehicle createVehicle(String vehicleType);
+    Vehicle createVehicle(String vehicleType);
 }
 
 // Concrete Factory
 class VehicleFactory implements VehicleFactory {
-    public Vehicle createVehicle(String vehicleType) {
-        if("TWOWHEELER".equalsIgnoreCase(vehicleType))
-        return new TwoWheeler();
-        if("FOURWHEELER".equalsIgnoreCase(vehicleType))
-            return new TwoWheeler();
-        return null;
-    }
+    public Vehicle createVehicle(String vehicleType) {
+        if("TWOWHEELER".equalsIgnoreCase(vehicleType))
+        return new TwoWheeler();
+        if("FOURWHEELER".equalsIgnoreCase(vehicleType))
+            return new TwoWheeler();
+        return null;
+    }
 }
 
 // Driver program
 public class GFG {
-    public static void main(String[] args) {
-        VehicleFactory vehicleFactory = new VehicleFactory();
-        Vehicle twoWheeler = vehicleFactory.createVehicle("TWOWHEELER");
-        twoWheeler.printVehicle();
-        Vehicle fourWheeler = vehicleFactory.createVehicle("FOURWHEELER");
-        fourWheeler.printVehicle();
-    }
+    public static void main(String[] args) {
+        VehicleFactory vehicleFactory = new VehicleFactory();
+        Vehicle twoWheeler = vehicleFactory.createVehicle("TWOWHEELER");
+        twoWheeler.printVehicle();
+        Vehicle fourWheeler = vehicleFactory.createVehicle("FOURWHEELER");
+        fourWheeler.printVehicle();
+    }
 }
 ```
 
@@ -74,78 +74,78 @@ Usage -
 ```java
 // Library classes
 abstract class Vehicle {
-  public abstract void printVehicle();
+  public abstract void printVehicle();
 }
 
 class TwoWheeler extends Vehicle {
-  public void printVehicle() {
-    System.out.println("I am two wheeler");
-  }
+  public void printVehicle() {
+    System.out.println("I am two wheeler");
+  }
 }
 
 class FourWheeler extends Vehicle {
-  public void printVehicle() {
-    System.out.println("I am four wheeler");
-  }
+  public void printVehicle() {
+    System.out.println("I am four wheeler");
+  }
 }
 
 abstract class Engine {
-  public abstract void printEngine();
+  public abstract void printEngine();
 }
 
 class TwoWheelerEngine extends Engine {
-  public void printEngine() {
-    System.out.println("I am two wheeler engine");
-  }
+  public void printEngine() {
+    System.out.println("I am two wheeler engine");
+  }
 }
 
 class FourWheelerEngine extends Engine {
-  public void printEngine() {
-    System.out.println("I am four wheeler engine");
-  }
+  public void printEngine() {
+    System.out.println("I am four wheeler engine");
+  }
 }
 
 // Abstract Factory
 interface AbstractFactory {
-  Vehicle createVehicle();
-  Engine createEngine();
+  Vehicle createVehicle();
+  Engine createEngine();
 }
 
 // Concrete Factory for TwoWheelers
 class TwoWheelerFactory implements AbstractFactory {
-  public Vehicle createVehicle() {
-    return new TwoWheeler();
-  }
-  public Engine createEngine() {
-    return new TwoWheelerEngine();
-  }
+  public Vehicle createVehicle() {
+    return new TwoWheeler();
+  }
+  public Engine createEngine() {
+    return new TwoWheelerEngine();
+  }
 }
 
 // Concrete Factory for FourWheelers
 class FourWheelerFactory implements AbstractFactory {
-  public Vehicle createVehicle() {
-    return new FourWheeler();
-  }
-  public Engine createEngine() {
-    return new FourWheelerEngine();
-  }
+  public Vehicle createVehicle() {
+    return new FourWheeler();
+  }
+  public Engine createEngine() {
+    return new FourWheelerEngine();
+  }
 }
 
 // Driver program
 public class GFG {
-  public static void main(String[] args) {
-    AbstractFactory twoWheelerFactory = new TwoWheelerFactory();
-    Vehicle twoWheeler = twoWheelerFactory.createVehicle();
-    Engine twoWheelerEngine = twoWheelerFactory.createEngine();
-    twoWheeler.printVehicle();
-    twoWheelerEngine.printEngine();
+  public static void main(String[] args) {
+    AbstractFactory twoWheelerFactory = new TwoWheelerFactory();
+    Vehicle twoWheeler = twoWheelerFactory.createVehicle();
+    Engine twoWheelerEngine = twoWheelerFactory.createEngine();
+    twoWheeler.printVehicle();
+    twoWheelerEngine.printEngine();
 
-    AbstractFactory fourWheelerFactory = new FourWheelerFactory();
-    Vehicle fourWheeler = fourWheelerFactory.createVehicle();
-    Engine fourWheelerEngine = fourWheelerFactory.createEngine();
-    fourWheeler.printVehicle();
-    fourWheelerEngine.printEngine();
-  }
+    AbstractFactory fourWheelerFactory = new FourWheelerFactory();
+    Vehicle fourWheeler = fourWheelerFactory.createVehicle();
+    Engine fourWheelerEngine = fourWheelerFactory.createEngine();
+    fourWheeler.printVehicle();
+    fourWheelerEngine.printEngine();
+  }
 }
 ```
 
@@ -161,65 +161,65 @@ Usage -
 ```java
 public class Vehicle {
 
-  // Required parameters
-  private String vehicleType;
-  private int wheels;
+  // Required parameters
+  private String vehicleType;
+  private int wheels;
 
-  // Optional parameters
-  private String color;
-  private boolean hasSunroof;
+  // Optional parameters
+  private String color;
+  private boolean hasSunroof;
 
-  private Vehicle(Builder builder) {
-    this.vehicleType = builder.vehicleType;
-    this.wheels = builder.wheels;
-    this.color = builder.color;
-    this.hasSunroof = builder.hasSunroof;
-  }
+  private Vehicle(Builder builder) {
+    this.vehicleType = builder.vehicleType;
+    this.wheels = builder.wheels;
+    this.color = builder.color;
+    this.hasSunroof = builder.hasSunroof;
+  }
 
-  public static class Builder {
+  public static class Builder {
 
-    // Required parameters
-    private String vehicleType;
-    private int wheels;
+    // Required parameters
+    private String vehicleType;
+    private int wheels;
 
-    // Optional parameters
-    private String color;
-    private boolean hasSunroof;
+    // Optional parameters
+    private String color;
+    private boolean hasSunroof;
 
 	// constructor for required fields
-    public Builder(String vehicleType, int wheels) {
-      this.vehicleType = vehicleType;
-      this.wheels = wheels;
-    }
+    public Builder(String vehicleType, int wheels) {
+      this.vehicleType = vehicleType;
+      this.wheels = wheels;
+    }
 
 	// setter methods for optional fields
-    public Builder color(String val) {
-      color = val;
-      return this;
-    }
-    public Builder hasSunroof(boolean val) {
-      hasSunroof = val;
-      return this;
-    }
-    public Vehicle build() {
-      return new Vehicle(this);
-    }
-  }
+    public Builder color(String val) {
+      color = val;
+      return this;
+    }
+    public Builder hasSunroof(boolean val) {
+      hasSunroof = val;
+      return this;
+    }
+    public Vehicle build() {
+      return new Vehicle(this);
+    }
+  }
 }
 
 public class BuilderPatternDemo {
-  public static void main(String[] args) {
-    Vehicle car = new Vehicle.Builder("car", 4)
-        .color("Red")
-        .hasSunroof(true)
-        .build();
-    System.out.println(car.toString());
-    Vehicle bike = new Vehicle.Builder("bike", 2)
-        .color("Black")
-        .hasSunroof(false)
-        .build();
-    System.out.println(bike.toString());
-  }
+  public static void main(String[] args) {
+    Vehicle car = new Vehicle.Builder("car", 4)
+        .color("Red")
+        .hasSunroof(true)
+        .build();
+    System.out.println(car.toString());
+    Vehicle bike = new Vehicle.Builder("bike", 2)
+        .color("Black")
+        .hasSunroof(false)
+        .build();
+    System.out.println(bike.toString());
+  }
 }
 ```
 
@@ -235,72 +235,72 @@ Usage -
 
 ```java
 abstract class Vehicle {
-  protected String vehicleType;
-  protected String color;
+  protected String vehicleType;
+  protected String color;
 
-  abstract void printVehicle();
-  abstract Vehicle makeCopy();
+  abstract void printVehicle();
+  abstract Vehicle makeCopy();
 
-  public void setColor(String color) {
-    this.color = color;
-  }
-  public String getColor() {
-    return color;
-  }
+  public void setColor(String color) {
+    this.color = color;
+  }
+  public String getColor() {
+    return color;
+  }
 }
 
 class TwoWheeler extends Vehicle {
-  public TwoWheeler() {
-    this.vehicleType = "Two Wheeler";
-  }
+  public TwoWheeler() {
+    this.vehicleType = "Two Wheeler";
+  }
 
-  @Override
-  void printVehicle() {
-    System.out.println("This is a " + this.color + " two wheeler vehicle");
-  }
+  @Override
+  void printVehicle() {
+    System.out.println("This is a " + this.color + " two wheeler vehicle");
+  }
 
-  @Override
-  Vehicle makeCopy() {
-    TwoWheeler copy = new TwoWheeler();
-    copy.setColor(this.color);
-    return copy;
-  }
+  @Override
+  Vehicle makeCopy() {
+    TwoWheeler copy = new TwoWheeler();
+    copy.setColor(this.color);
+    return copy;
+  }
 }
 
 class FourWheeler extends Vehicle {
-  public FourWheeler() {
-    this.vehicleType = "Four Wheeler";
-  }
+  public FourWheeler() {
+    this.vehicleType = "Four Wheeler";
+  }
 
-  @Override
-  void printVehicle() {
-    System.out.println("This is a " + this.color + " four wheeler vehicle");
-  }
+  @Override
+  void printVehicle() {
+    System.out.println("This is a " + this.color + " four wheeler vehicle");
+  }
 
-  @Override
-  Vehicle makeCopy() {
-    FourWheeler copy = new FourWheeler();
-    copy.setColor(this.color);
-    return copy;
-  }
+  @Override
+  Vehicle makeCopy() {
+    FourWheeler copy = new FourWheeler();
+    copy.setColor(this.color);
+    return copy;
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
-    Vehicle twoWheeler = new TwoWheeler();
-    twoWheeler.setColor("Red");
-    twoWheeler.printVehicle(); // This is a Red two wheeler vehicle
+  public static void main(String[] args) {
+    Vehicle twoWheeler = new TwoWheeler();
+    twoWheeler.setColor("Red");
+    twoWheeler.printVehicle(); // This is a Red two wheeler vehicle
 
-    Vehicle clonedTwoWheeler = twoWheeler.makeCopy();
-    clonedTwoWheeler.printVehicle(); // This is a Red two wheeler vehicle
+    Vehicle clonedTwoWheeler = twoWheeler.makeCopy();
+    clonedTwoWheeler.printVehicle(); // This is a Red two wheeler vehicle
 
-    Vehicle fourWheeler = new FourWheeler();
-    fourWheeler.setColor("Blue");
-    fourWheeler.printVehicle(); // This is a Blue four wheeler vehicle
+    Vehicle fourWheeler = new FourWheeler();
+    fourWheeler.setColor("Blue");
+    fourWheeler.printVehicle(); // This is a Blue four wheeler vehicle
 
-    Vehicle clonedFourWheeler = fourWheeler.makeCopy();
-    clonedFourWheeler.printVehicle(); // This is a Blue four wheeler vehicle
-  }
+    Vehicle clonedFourWheeler = fourWheeler.makeCopy();
+    clonedFourWheeler.printVehicle(); // This is a Blue four wheeler vehicle
+  }
 }
 ```
 
@@ -447,67 +447,67 @@ Class Type adapter (Using inheritance) -
 ```java
 // Existing class
 interface Vehicle {
-  void start();
-  void stop();
-  }
+  void start();
+  void stop();
+  }
 }
 
 // New class
 class Bicycle {
-  void pedal() {
-    System.out.println("Bicycle is pedaling");
-  }
-  void brakes() {
-    System.out.println("Bicycle is applying brakes");
-  }
+  void pedal() {
+    System.out.println("Bicycle is pedaling");
+  }
+  void brakes() {
+    System.out.println("Bicycle is applying brakes");
+  }
 }
 
 // OBJECT TYPE ADAPTER - uses composition of adaptee in the adapter
 class BicycleToVehicleAdapter implements Vehicle {
 
-  private Bicycle bicycle;
+  private Bicycle bicycle;
 
-  public BicycleToVehicleAdapter(Bicycle bicycle) {
-    this.bicycle = bicycle;
-  }
+  public BicycleToVehicleAdapter(Bicycle bicycle) {
+    this.bicycle = bicycle;
+  }
 
-  @Override
-  void start() {
-    bike.pedal();
-  }
-  @Override
-  void stop() {
-    bike.brakes();
-  }
+  @Override
+  void start() {
+    bike.pedal();
+  }
+  @Override
+  void stop() {
+    bike.brakes();
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) {
 
-    Bicycle bicycle = new Bicycle();
-    Vehicle bikeAdapter = new BicycleToVehicleAdapter(bicycle);
-    bikeAdapter.start(); // Bicycle is pedaling
-    bikeAdapter.stop(); // Bicycle is applying brakes
-  }
+    Bicycle bicycle = new Bicycle();
+    Vehicle bikeAdapter = new BicycleToVehicleAdapter(bicycle);
+    bikeAdapter.start(); // Bicycle is pedaling
+    bikeAdapter.stop(); // Bicycle is applying brakes
+  }
 }
 
 // Similar to above we can have CLASS TYPE ADAPTER - uses inheritance
 class BicycleToVehicleAdapter2 extends Bicycle implements Vehicle {
- @Override
- void start() {
-  pedal();
- }
- @Override
- void stop() {
-  brakes();
- }
+ @Override
+ void start() {
+  pedal();
+ }
+ @Override
+ void stop() {
+  brakes();
+ }
 }
 ```
 
 ------------------------------------------------------------------------------------------------------------------
 
 ### Bridge
-Structural design pattern that divides business logic or huge class into separate class hierarchies that can be developed independently. It separate the abstraction from its implementation, so that the two can vary independently. One of these hierarchies (often called the Abstraction) will get a reference to an object of the second hierarchy (Implementation). Always remember it has 2 parts - abstraction & implementation.
+Structural design pattern that divides business logic or huge class into separate class hierarchies that can be developed independently. It separate the abstraction from its implementation, so that the two can vary independently. One of these hierarchies (often called the Abstraction) will get a reference to an object of the second hierarchy (Implementation). Always remember it has 2 parts - abstraction & implementation.
 Bridge design pattern can be used when both abstraction and implementation can have different hierarchies independently and we want to hide the implementation from the client application.
 
 Usage -
@@ -518,62 +518,62 @@ Usage -
 ```java
 // Implementor
 interface Engine {
-  void startEngine();
+  void startEngine();
 }
 
 class PetrolEngine implements Engine {
-  public void startEngine() {
-    System.out.println("Petrol Engine started");
-  }
+  public void startEngine() {
+    System.out.println("Petrol Engine started");
+  }
 }
 
 class ElectricEngine implements Engine {
-  public void startEngine() {
-    System.out.println("Electric Engine started");
-  }
+  public void startEngine() {
+    System.out.println("Electric Engine started");
+  }
 }
 
 // Abstraction
 abstract class Vehicle {
 
-  protected Engine engine; // composition implementor
+  protected Engine engine; // composition implementor
 
-  public Vehicle(Engine engine) {
-    this.engine = engine;
-  }
-  abstract void start();
+  public Vehicle(Engine engine) {
+    this.engine = engine;
+  }
+  abstract void start();
 }
 
 // Refined Abstraction
 class Car extends Vehicle {
-  public Car(Engine engine) {
-    super(engine);
-  }
-  void start() {
-    System.out.print("Car ");
-    engine.startEngine();
-  }
+  public Car(Engine engine) {
+    super(engine);
+  }
+  void start() {
+    System.out.print("Car ");
+    engine.startEngine();
+  }
 }
 
 class Bike extends Vehicle {
-  public Bike(Engine engine) {
-    super(engine);
-  }
-  void start() {
-    System.out.print("Bike ");
-    engine.startEngine();
-  }
+  public Bike(Engine engine) {
+    super(engine);
+  }
+  void start() {
+    System.out.print("Bike ");
+    engine.startEngine();
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) {
 
-    Vehicle vehicle1 = new Car(new PetrolEngine());
-    vehicle1.start(); // Car Petrol Engine started
+    Vehicle vehicle1 = new Car(new PetrolEngine());
+    vehicle1.start(); // Car Petrol Engine started
 
-    Vehicle vehicle2 = new Bike(new ElectricEngine());
-    vehicle2.start(); // Bike Electric Engine started
-  }
+    Vehicle vehicle2 = new Bike(new ElectricEngine());
+    vehicle2.start(); // Bike Electric Engine started
+  }
 }
 ```
 
@@ -589,55 +589,55 @@ Usage -
 ```java
 // Base component
 abstract class VehiclePart {
-  void printPart() {}
+  void printPart() {}
 }
 
 // Leaf
 class Engine extends VehiclePart {
-  @Override
-  void printPart() {
-    System.out.println("Engine");
-  }
+  @Override
+  void printPart() {
+    System.out.println("Engine");
+  }
 }
 
 // Leaf
 class Wheel extends VehiclePart {
-  @Override
-  void printPart() {
-    System.out.println("Wheel");
-  }
+  @Override
+  void printPart() {
+    System.out.println("Wheel");
+  }
 }
 
 // Composite
 class Vehicle extends VehiclePart {
 
-  private List<VehiclePart> parts = new ArrayList<>(); // important - it demonstrates the composition of objects, also methods for adding & removing elements from the list.
+  private List<VehiclePart> parts = new ArrayList<>(); // important - it demonstrates the composition of objects, also methods for adding & removing elements from the list.
 
-  void addPart(VehiclePart part) {
-    parts.add(part);
-  }
-  void removePart(VehiclePart part) {
-    parts.remove(part);
-  }
-  @Override
-  void printPart() {
-    for (VehiclePart part : parts) {
-      part.printPart();
-    }
-  }
+  void addPart(VehiclePart part) {
+    parts.add(part);
+  }
+  void removePart(VehiclePart part) {
+    parts.remove(part);
+  }
+  @Override
+  void printPart() {
+    for (VehiclePart part : parts) {
+      part.printPart();
+    }
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) {
 
-    VehiclePart engine = new Engine();
-    VehiclePart wheel = new Wheel();
+    VehiclePart engine = new Engine();
+    VehiclePart wheel = new Wheel();
 
-    Vehicle vehicle = new Vehicle();
-    vehicle.addPart(engine);
-    vehicle.addPart(wheel);
-    vehicle.printPart(); // Engine Wheel
-  }
+    Vehicle vehicle = new Vehicle();
+    vehicle.addPart(engine);
+    vehicle.addPart(wheel);
+    vehicle.printPart(); // Engine Wheel
+  }
 }
 ```
 
@@ -653,62 +653,62 @@ Usage -
 ```java
 // Component
 abstract class Vehicle {
-  abstract String getDescription();
-  abstract double getCost();
+  abstract String getDescription();
+  abstract double getCost();
 }
 
 // ConcreteComponent
 class Car extends Vehicle {
-  String getDescription() {
-    return "Car";
-  }
-  double getCost() {
-    return 10000.0;
-  }
+  String getDescription() {
+    return "Car";
+  }
+  double getCost() {
+    return 10000.0;
+  }
 }
 
 // Decorator
 abstract class VehicleDecorator extends Vehicle {
-  protected Vehicle vehicle;
+  protected Vehicle vehicle;
 }
 
 // ConcreteDecoratorA
 class WithSunroof extends VehicleDecorator {
-  WithSunroof(Vehicle vehicle) {
-    this.vehicle = vehicle;
-  }
-  String getDescription() {
-    return vehicle.getDescription() + ", with sunroof";
-  }
-  double getCost() {
-    return vehicle.getCost() + 500.0;
-  }
+  WithSunroof(Vehicle vehicle) {
+    this.vehicle = vehicle;
+  }
+  String getDescription() {
+    return vehicle.getDescription() + ", with sunroof";
+  }
+  double getCost() {
+    return vehicle.getCost() + 500.0;
+  }
 }
 
 // ConcreteDecoratorB
 class WithNavigation extends VehicleDecorator {
-  WithNavigation(Vehicle vehicle) {
-    this.vehicle = vehicle;
-  }
-  String getDescription() {
-    return vehicle.getDescription() + ", with navigation";
-  }
-  double getCost() {
-    return vehicle.getCost() + 300.0;
-  }
+  WithNavigation(Vehicle vehicle) {
+    this.vehicle = vehicle;
+  }
+  String getDescription() {
+    return vehicle.getDescription() + ", with navigation";
+  }
+  double getCost() {
+    return vehicle.getCost() + 300.0;
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
-    Vehicle car = new Car();
-    System.out.println(car.getDescription() + " $" + car.getCost()); // Car $10000.0
+  public static void main(String[] args) {
+    Vehicle car = new Car();
+    System.out.println(car.getDescription() + " $" + car.getCost()); // Car $10000.0
 
-    car = new WithSunroof(car);
-    System.out.println(car.getDescription() + " $" + car.getCost()); // Car, with sunroof $10500.0
+    car = new WithSunroof(car);
+    System.out.println(car.getDescription() + " $" + car.getCost()); // Car, with sunroof $10500.0
 
-    car = new WithNavigation(car);
-    System.out.println(car.getDescription() + " $" + car.getCost()); // Car, with sunroof, with navigation $10800.0
-  }
+    car = new WithNavigation(car);
+    System.out.println(car.getDescription() + " $" + car.getCost()); // Car, with sunroof, with navigation $10800.0
+  }
 }
 ```
 
@@ -724,48 +724,48 @@ Usage -
 
 ```java
 class Engine {
-  public void start() {
-    System.out.println("Engine started");
-  }
+  public void start() {
+    System.out.println("Engine started");
+  }
 }
 
 class Lights {
-  public void on() {
-    System.out.println("Lights turned on");
-  }
+  public void on() {
+    System.out.println("Lights turned on");
+  }
 }
 
 class Radio {
-  public void play() {
-    System.out.println("Radio playing");
-  }
+  public void play() {
+    System.out.println("Radio playing");
+  }
 }
 
 // Facade
 class Vehicle {
-  private Engine engine;
-  private Lights lights;
-  private Radio radio;
+  private Engine engine;
+  private Lights lights;
+  private Radio radio;
 
-  public Vehicle() {
-    this.engine = new Engine();
-    this.lights = new Lights();
-    this.radio = new Radio();
-  }
+  public Vehicle() {
+    this.engine = new Engine();
+    this.lights = new Lights();
+    this.radio = new Radio();
+  }
 
 // facade method which hides the details - user only knows vehicle.start() not about what is happening in this method 
-  public void start() {
-    engine.start();
-    lights.on();
-    radio.play();
-  }
+  public void start() {
+    engine.start();
+    lights.on();
+    radio.play();
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
-    Vehicle vehicle = new Vehicle();
-    vehicle.start(); // Engine started Lights turned on Radio playing
-  }
+  public static void main(String[] args) {
+    Vehicle vehicle = new Vehicle();
+    vehicle.start(); // Engine started Lights turned on Radio playing
+  }
 }
 ```
 
@@ -785,56 +785,56 @@ Usage -
 ```java
 // Flyweight
 interface Vehicle {
-  void assignDriver(String driverName);
-  void move();
+  void assignDriver(String driverName);
+  void move();
 }
 
 // ConcreteFlyweight
 class Car implements Vehicle {
-  private final String color; // intrinsic state
-  public Car(String color) {
-    this.color = color;
-  }
-  public void assignDriver(String driverName) { // extrinsic state
-    System.out.println("Assigning driver " + driverName + " to " + color + " car");
-  }
-  public void move() {
-    System.out.println(color + " car is moving");
-  }
+  private final String color; // intrinsic state
+  public Car(String color) {
+    this.color = color;
+  }
+  public void assignDriver(String driverName) { // extrinsic state
+    System.out.println("Assigning driver " + driverName + " to " + color + " car");
+  }
+  public void move() {
+    System.out.println(color + " car is moving");
+  }
 }
 
 // FlyweightFactory
 class VehicleFactory {
 
-  private Map<String, Vehicle> vehicles = new HashMap<>();
+  private Map<String, Vehicle> vehicles = new HashMap<>();
 
-  public Vehicle getVehicle(String color) {
-    Vehicle vehicle = vehicles.get(color);
-    if (vehicle == null) {
-      vehicle = new Car(color);
-      vehicles.put(color, vehicle);
-      System.out.println("Creating a " + color + " car");
-    }
-    return vehicle;
-  }
+  public Vehicle getVehicle(String color) {
+    Vehicle vehicle = vehicles.get(color);
+    if (vehicle == null) {
+      vehicle = new Car(color);
+      vehicles.put(color, vehicle);
+      System.out.println("Creating a " + color + " car");
+    }
+    return vehicle;
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) {
 
-    VehicleFactory vehicleFactory = new VehicleFactory();
-    Vehicle vehicle1 = vehicleFactory.getVehicle("red");
-    vehicle1.assignDriver("John");
-    vehicle1.move();
+    VehicleFactory vehicleFactory = new VehicleFactory();
+    Vehicle vehicle1 = vehicleFactory.getVehicle("red");
+    vehicle1.assignDriver("John");
+    vehicle1.move();
 
-    Vehicle vehicle2 = vehicleFactory.getVehicle("blue");
-    vehicle2.assignDriver("Jane");
-    vehicle2.move();
+    Vehicle vehicle2 = vehicleFactory.getVehicle("blue");
+    vehicle2.assignDriver("Jane");
+    vehicle2.move();
 
-    Vehicle vehicle3 = vehicleFactory.getVehicle("red"); // reuses existing red car
-    vehicle3.assignDriver("Rick");
-    vehicle3.move();
-  }
+    Vehicle vehicle3 = vehicleFactory.getVehicle("red"); // reuses existing red car
+    vehicle3.assignDriver("Rick");
+    vehicle3.move();
+  }
 }
 ```
 
@@ -851,44 +851,44 @@ Usage -
 ```java
 // Subject
 interface Vehicle {
-  void drive();
+  void drive();
 }
 
 // RealSubject
 class Car implements Vehicle {
-  public void drive() {
-    System.out.println("Car is being driven");
-  }
+  public void drive() {
+    System.out.println("Car is being driven");
+  }
 }
 
 // Proxy
 class CarProxy implements Vehicle {
-  private Car car;
-  private String driverLicense;
-  public CarProxy(String driverLicense) {
-    this.driverLicense = driverLicense;
-    this.car = new Car();
-  }
-  public void drive() {
-    if (checkLicense()) {
-      car.drive(); // delegates the call to the Car object.
-    } else {
-      System.out.println("Driver's license is not valid. Cannot drive the car.");
-    }
-  }
-  private boolean checkLicense() {
-    // Suppose valid license should start with "Valid"
-    return driverLicense.startsWith("Valid");
-  }
+  private Car car;
+  private String driverLicense;
+  public CarProxy(String driverLicense) {
+    this.driverLicense = driverLicense;
+    this.car = new Car();
+  }
+  public void drive() {
+    if (checkLicense()) {
+      car.drive(); // delegates the call to the Car object.
+    } else {
+      System.out.println("Driver's license is not valid. Cannot drive the car.");
+    }
+  }
+  private boolean checkLicense() {
+    // Suppose valid license should start with "Valid"
+    return driverLicense.startsWith("Valid");
+  }
 }
 
 public class Main {
-  public static void main(String[] args) {
-    Vehicle car = new CarProxy("Valid123");
-    car.drive(); // Car is being driven
-    Vehicle car2 = new CarProxy("Invalid456");
-    car2.drive(); // Driver's license is not valid. Cannot drive the car.
-  }
+  public static void main(String[] args) {
+    Vehicle car = new CarProxy("Valid123");
+    car.drive(); // Car is being driven
+    Vehicle car2 = new CarProxy("Invalid456");
+    car2.drive(); // Driver's license is not valid. Cannot drive the car.
+  }
 }
 ```
 
@@ -909,102 +909,102 @@ Usage -
 ```java
 // Handler interface
 interface VehicleInspector {
-  void handle(VehicleCheck check);
-  void setNext(VehicleInspector next);
+  void handle(VehicleCheck check);
+  void setNext(VehicleInspector next);
 }
 
 // Concrete handler - Level 1 inspection
 class Level1Inspector implements VehicleInspector {
-  private VehicleInspector next;
+  private VehicleInspector next;
 
-  @Override
-  public void handle(VehicleCheck check) {
-    if (check.getDescription().equals("Level 1")) {
-      System.out.println("Level 1 inspection performed");
-    } else if (next != null) {
-      next.handle(check);
-    } else {
-      System.out.println("No inspector available to handle this check");
-    }
-  }
+  @Override
+  public void handle(VehicleCheck check) {
+    if (check.getDescription().equals("Level 1")) {
+      System.out.println("Level 1 inspection performed");
+    } else if (next != null) {
+      next.handle(check);
+    } else {
+      System.out.println("No inspector available to handle this check");
+    }
+  }
 
-  @Override
-  public void setNext(VehicleInspector next) {
-    this.next = next;
-  }
+  @Override
+  public void setNext(VehicleInspector next) {
+    this.next = next;
+  }
 }
 
 // Concrete handler - Level 2 inspection
 class Level2Inspector implements VehicleInspector {
-  private VehicleInspector next;
+  private VehicleInspector next;
 
-  @Override
-  public void handle(VehicleCheck check) {
-    if (check.getDescription().equals("Level 2")) {
-      System.out.println("Level 2 inspection performed");
-    } else if (next != null) {
-      next.handle(check);
-    } else {
-      System.out.println("No inspector available to handle this check");
-    }
-  }
+  @Override
+  public void handle(VehicleCheck check) {
+    if (check.getDescription().equals("Level 2")) {
+      System.out.println("Level 2 inspection performed");
+    } else if (next != null) {
+      next.handle(check);
+    } else {
+      System.out.println("No inspector available to handle this check");
+    }
+  }
 
-  @Override
-  public void setNext(VehicleInspector next) {
-    this.next = next;
-  }
+  @Override
+  public void setNext(VehicleInspector next) {
+    this.next = next;
+  }
 }
 
 // Concrete handler - Level 3 inspection
 class Level3Inspector implements VehicleInspector {
-  private VehicleInspector next;
+  private VehicleInspector next;
 
-  @Override
-  public void handle(VehicleCheck check) {
-    if (check.getDescription().equals("Level 3")) {
-      System.out.println("Level 3 inspection performed");
-    } else if (next != null) {
-      next.handle(check);
-    } else {
-      System.out.println("No inspector available to handle this check");
-    }
-  }
+  @Override
+  public void handle(VehicleCheck check) {
+    if (check.getDescription().equals("Level 3")) {
+      System.out.println("Level 3 inspection performed");
+    } else if (next != null) {
+      next.handle(check);
+    } else {
+      System.out.println("No inspector available to handle this check");
+    }
+  }
 
-  @Override
-  public void setNext(VehicleInspector next) {
-    this.next = next;
-  }
+  @Override
+  public void setNext(VehicleInspector next) {
+    this.next = next;
+  }
 }
 
 // Request class
 class VehicleCheck {
- private String description;
- public VehicleCheck(String description) {
-  this.description = description;
- }
- public String getDescription() {
-  return description;
- }
+ private String description;
+ public VehicleCheck(String description) {
+  this.description = description;
+ }
+ public String getDescription() {
+  return description;
+ }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create inspectors
-    VehicleInspector level1Inspector = new Level1Inspector();
-    VehicleInspector level2Inspector = new Level2Inspector();
-    VehicleInspector level3Inspector = new Level3Inspector();
+  public static void main(String[] args) {
+    // Create inspectors
+    VehicleInspector level1Inspector = new Level1Inspector();
+    VehicleInspector level2Inspector = new Level2Inspector();
+    VehicleInspector level3Inspector = new Level3Inspector();
 
-    // Chain the inspectors
-    level1Inspector.setNext(level2Inspector);
-    level2Inspector.setNext(level3Inspector);
+    // Chain the inspectors
+    level1Inspector.setNext(level2Inspector);
+    level2Inspector.setNext(level3Inspector);
 
-    // Perform checks
-    VehicleCheck check = new VehicleCheck("Level 2");
+    // Perform checks
+    VehicleCheck check = new VehicleCheck("Level 2");
 
-    // Start the chain of responsibility
-    level1Inspector.handle(check);
-  }
+    // Start the chain of responsibility
+    level1Inspector.handle(check);
+  }
 }
 ```
 
@@ -1025,65 +1025,65 @@ Usage -
 ```java
 // Receiver interface
 interface Vehicle {
-  void start();
+  void start();
 }
 
 // Concrete receiver - Car
 class Car implements Vehicle {
-  @Override
-  public void start() {
-    System.out.println("Car started");
-  }
+  @Override
+  public void start() {
+    System.out.println("Car started");
+  }
 }
 
 // Command interface
 interface Command {
-  void execute();
+  void execute();
 }
 
 // Concrete command - StartCommand
 class StartCommand implements Command {
-  private Vehicle vehicle;
+  private Vehicle vehicle;
 
-  public StartCommand(Vehicle vehicle) {
-    this.vehicle = vehicle;
-  }
+  public StartCommand(Vehicle vehicle) {
+    this.vehicle = vehicle;
+  }
 
-  @Override
-  public void execute() {
-    vehicle.start();
-  }
+  @Override
+  public void execute() {
+    vehicle.start();
+  }
 }
 
 // Invoker
 class VehicleOperator {
-  private Command command;
+  private Command command;
 
-  public void setCommand(Command command) {
-    this.command = command;
-  }
+  public void setCommand(Command command) {
+    this.command = command;
+  }
 
-  public void executeCommand() {
-    command.execute();
-  }
+  public void executeCommand() {
+    command.execute();
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create receiver
-    Vehicle car = new Car();
+  public static void main(String[] args) {
+    // Create receiver
+    Vehicle car = new Car();
 
-    // Create command
-    Command startCarCommand = new StartCommand(car);
+    // Create command
+    Command startCarCommand = new StartCommand(car);
 
-    // Create invoker
-    VehicleOperator vehicleOperator = new VehicleOperator();
-    vehicleOperator.setCommand(startCarCommand);
+    // Create invoker
+    VehicleOperator vehicleOperator = new VehicleOperator();
+    vehicleOperator.setCommand(startCarCommand);
 
-    // Execute command
-    vehicleOperator.executeCommand();
-  }
+    // Execute command
+    vehicleOperator.executeCommand();
+  }
 }
 ```
 
@@ -1100,73 +1100,73 @@ Usage -
 ```java
 // Vehicle class
 class Vehicle {
-  private String name;
+  private String name;
 
-  public Vehicle(String name) {
-    this.name = name;
-  }
+  public Vehicle(String name) {
+    this.name = name;
+  }
 
-  public String getName() {
-    return name;
-  }
+  public String getName() {
+    return name;
+  }
 }
 
 // Custom Iterator interface
 interface MyIterator<T> {
-  boolean hasNext();
-  T next();
+  boolean hasNext();
+  T next();
 }
 
 // Concrete aggregate - VehicleList
 class VehicleList {
-  private List<Vehicle> vehicles;
+  private List<Vehicle> vehicles;
 
-  public VehicleList() {
-    vehicles = new ArrayList<>();
-  }
+  public VehicleList() {
+    vehicles = new ArrayList<>();
+  }
 
-  public void addVehicle(Vehicle vehicle) {
-    vehicles.add(vehicle);
-  }
+  public void addVehicle(Vehicle vehicle) {
+    vehicles.add(vehicle);
+  }
 
-  public MyIterator<Vehicle> createIterator() {
-    return new VehicleIterator();
-  }
+  public MyIterator<Vehicle> createIterator() {
+    return new VehicleIterator();
+  }
 
-  // Nested class implementing Iterator<Vehicle>
-  private class VehicleIterator implements MyIterator<Vehicle> {
-    private int position = 0;
+  // Nested class implementing Iterator<Vehicle>
+  private class VehicleIterator implements MyIterator<Vehicle> {
+    private int position = 0;
 
-    @Override
-    public boolean hasNext() {
-      return position < vehicles.size();
-    }
+    @Override
+    public boolean hasNext() {
+      return position < vehicles.size();
+    }
 
-    @Override
-    public Vehicle next() {
-      if (hasNext()) {
-        return vehicles.get(position++);
-      }
-      return null;
-    }
-  }
+    @Override
+    public Vehicle next() {
+      if (hasNext()) {
+        return vehicles.get(position++);
+      }
+      return null;
+    }
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create a collection of vehicles
-    VehicleList vehicleList = new VehicleList();
-    vehicleList.addVehicle(new Vehicle("Car"));
-    vehicleList.addVehicle(new Vehicle("Motorcycle"));
+  public static void main(String[] args) {
+    // Create a collection of vehicles
+    VehicleList vehicleList = new VehicleList();
+    vehicleList.addVehicle(new Vehicle("Car"));
+    vehicleList.addVehicle(new Vehicle("Motorcycle"));
 
-    // Create and use a custom iterator
-    MyIterator<Vehicle> iterator = vehicleList.createIterator();
-    while (iterator.hasNext()) {
-      Vehicle vehicle = iterator.next();
-      System.out.println("Vehicle: " + vehicle.getName());
-    }
-  }
+    // Create and use a custom iterator
+    MyIterator<Vehicle> iterator = vehicleList.createIterator();
+    while (iterator.hasNext()) {
+      Vehicle vehicle = iterator.next();
+      System.out.println("Vehicle: " + vehicle.getName());
+    }
+  }
 }
 ```
 
@@ -1183,66 +1183,66 @@ Usage -
 ```java
 // Abstract expression interface
 interface Expression {
-  int interpret();
+  int interpret();
 }
 
 // Terminal expression - Number
 class NumberExpression implements Expression {
-  private int number;
+  private int number;
 
-  public NumberExpression(int number) {
-    this.number = number;
-  }
+  public NumberExpression(int number) {
+    this.number = number;
+  }
 
-  @Override
-  public int interpret() {
-    return number;
-  }
+  @Override
+  public int interpret() {
+    return number;
+  }
 }
 
 // Non-terminal expression - Addition
 class AdditionExpression implements Expression {
-  private Expression left;
-  private Expression right;
+  private Expression left;
+  private Expression right;
 
-  public AdditionExpression(Expression left, Expression right) {
-    this.left = left;
-    this.right = right;
-  }
+  public AdditionExpression(Expression left, Expression right) {
+    this.left = left;
+    this.right = right;
+  }
 
-  @Override
-  public int interpret() {
-    return left.interpret() + right.interpret();
-  }
+  @Override
+  public int interpret() {
+    return left.interpret() + right.interpret();
+  }
 }
 
 // Non-terminal expression - Subtraction
 class SubtractionExpression implements Expression {
-  private Expression left;
-  private Expression right;
+  private Expression left;
+  private Expression right;
 
-  public SubtractionExpression(Expression left, Expression right) {
-    this.left = left;
-    this.right = right;
-  }
+  public SubtractionExpression(Expression left, Expression right) {
+    this.left = left;
+    this.right = right;
+  }
 
-  @Override
-  public int interpret() {
-    return left.interpret() - right.interpret();
-  }
+  @Override
+  public int interpret() {
+    return left.interpret() - right.interpret();
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create expressions
-    Expression expression1 = new AdditionExpression(new NumberExpression(10), new NumberExpression(5));
-    Expression expression2 = new SubtractionExpression(new NumberExpression(20), new NumberExpression(8));
+  public static void main(String[] args) {
+    // Create expressions
+    Expression expression1 = new AdditionExpression(new NumberExpression(10), new NumberExpression(5));
+    Expression expression2 = new SubtractionExpression(new NumberExpression(20), new NumberExpression(8));
 
-    // Evaluate expressions
-    System.out.println("Result of expression 1: " + expression1.interpret()); // Output: 15
-    System.out.println("Result of expression 2: " + expression2.interpret()); // Output: 12
-  }
+    // Evaluate expressions
+    System.out.println("Result of expression 1: " + expression1.interpret()); // Output: 15
+    System.out.println("Result of expression 2: " + expression2.interpret()); // Output: 12
+  }
 }
 ```
 
@@ -1259,86 +1259,86 @@ Usage -
 ```java
 // Mediator interface
 interface TrafficPolice {
-  void notify(Vehicle sender, String event);
+  void notify(Vehicle sender, String event);
 }
 
 // Component interface
 abstract class Vehicle {
-  protected TrafficPolice mediator;
+  protected TrafficPolice mediator;
 
-  public Vehicle(TrafficPolice mediator) {
-    this.mediator = mediator;
-  }
+  public Vehicle(TrafficPolice mediator) {
+    this.mediator = mediator;
+  }
 
-  public abstract void send(String event);
+  public abstract void send(String event);
 
-  public abstract void receive(String event);
+  public abstract void receive(String event);
 }
 
 // Concrete component - Car
 class Car extends Vehicle {
-  public Car(TrafficPolice mediator) {
-    super(mediator);
-  }
+  public Car(TrafficPolice mediator) {
+    super(mediator);
+  }
 
-  @Override
-  public void send(String event) {
-    mediator.notify(this, event);
-  }
+  @Override
+  public void send(String event) {
+    mediator.notify(this, event);
+  }
 
-  @Override
-  public void receive(String event) {
-    System.out.println("Car received event: " + event);
-  }
+  @Override
+  public void receive(String event) {
+    System.out.println("Car received event: " + event);
+  }
 
-  public void start() {
-    send("Start");
-  }
+  public void start() {
+    send("Start");
+  }
 
-  public void stop() {
-    send("Stop");
-  }
+  public void stop() {
+    send("Stop");
+  }
 }
 
 // Concrete mediator - TrafficPoliceMan
 class TrafficPoliceMan implements TrafficPolice {
-  private List<Vehicle> vehicles;
+  private List<Vehicle> vehicles;
 
-  public TrafficPoliceMan() {
-    this.vehicles = new ArrayList<>();
-  }
+  public TrafficPoliceMan() {
+    this.vehicles = new ArrayList<>();
+  }
 
-  public void registerVehicle(Vehicle vehicle) {
-    vehicles.add(vehicle);
-  }
+  public void registerVehicle(Vehicle vehicle) {
+    vehicles.add(vehicle);
+  }
 
-  @Override
-  public void notify(Vehicle sender, String event) {
-    for (Vehicle vehicle : vehicles) {
-      if (vehicle != sender) {
-        vehicle.receive(event);
-      }
-    }
-  }
+  @Override
+  public void notify(Vehicle sender, String event) {
+    for (Vehicle vehicle : vehicles) {
+      if (vehicle != sender) {
+        vehicle.receive(event);
+      }
+    }
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create mediator
-    TrafficPoliceMan trafficPoliceMan = new TrafficPoliceMan();
+  public static void main(String[] args) {
+    // Create mediator
+    TrafficPoliceMan trafficPoliceMan = new TrafficPoliceMan();
 
-    // Create components and register them with mediator
-    Car car1 = new Car(trafficPoliceMan);
-    Car car2 = new Car(trafficPoliceMan);
+    // Create components and register them with mediator
+    Car car1 = new Car(trafficPoliceMan);
+    Car car2 = new Car(trafficPoliceMan);
 
-    trafficPoliceMan.registerVehicle(car1);
-    trafficPoliceMan.registerVehicle(car2);
+    trafficPoliceMan.registerVehicle(car1);
+    trafficPoliceMan.registerVehicle(car2);
 
-    // Simulate vehicle operations
-    car1.start();
-    car2.stop();
-  }
+    // Simulate vehicle operations
+    car1.start();
+    car2.stop();
+  }
 }
 ```
 
@@ -1355,60 +1355,60 @@ Usage -
 ```java
 // Memento class
 class VehicleMemento {
-  private int speed;
-  private double fuelLevel;
-  private double mileage;
+  private int speed;
+  private double fuelLevel;
+  private double mileage;
 
-  public VehicleMemento(int speed, double fuelLevel, double mileage) {
-    this.speed = speed;
-    this.fuelLevel = fuelLevel;
-    this.mileage = mileage;
-  }
+  public VehicleMemento(int speed, double fuelLevel, double mileage) {
+    this.speed = speed;
+    this.fuelLevel = fuelLevel;
+    this.mileage = mileage;
+  }
 
-  public int getSpeed() {
-    return speed;
-  }
+  public int getSpeed() {
+    return speed;
+  }
 
-  public double getFuelLevel() {
-    return fuelLevel;
-  }
+  public double getFuelLevel() {
+    return fuelLevel;
+  }
 
-  public double getMileage() {
-    return mileage;
-  }
+  public double getMileage() {
+    return mileage;
+  }
 }
 
 // Originator class - Vehicle
 class Vehicle {
-  private int speed;
-  private double fuelLevel;
-  private double mileage;
+  private int speed;
+  private double fuelLevel;
+  private double mileage;
 
-  public void setSpeed(int speed) {
-    this.speed = speed;
-  }
+  public void setSpeed(int speed) {
+    this.speed = speed;
+  }
 
-  public void setFuelLevel(double fuelLevel) {
-    this.fuelLevel = fuelLevel;
-  }
+  public void setFuelLevel(double fuelLevel) {
+    this.fuelLevel = fuelLevel;
+  }
 
-  public void setMileage(double mileage) {
-    this.mileage = mileage;
-  }
+  public void setMileage(double mileage) {
+    this.mileage = mileage;
+  }
 
-  public VehicleMemento saveState() {
-    return new VehicleMemento(speed, fuelLevel, mileage);
-  }
+  public VehicleMemento saveState() {
+    return new VehicleMemento(speed, fuelLevel, mileage);
+  }
 
-  public void restoreState(VehicleMemento memento) {
-    this.speed = memento.getSpeed();
-    this.fuelLevel = memento.getFuelLevel();
-    this.mileage = memento.getMileage();
-  }
+  public void restoreState(VehicleMemento memento) {
+    this.speed = memento.getSpeed();
+    this.fuelLevel = memento.getFuelLevel();
+    this.mileage = memento.getMileage();
+  }
 
-  public void printState() {
-    System.out.println("Speed: " + speed + " mph, Fuel Level: " + fuelLevel + " gallons, Mileage: " + mileage + " miles");
-  }
+  public void printState() {
+    System.out.println("Speed: " + speed + " mph, Fuel Level: " + fuelLevel + " gallons, Mileage: " + mileage + " miles");
+  }
 }
 
 // Caretaker class - VehicleCareTaker
@@ -1478,21 +1478,21 @@ Usage -
 ```java
 // Subscriber interface
 interface MailSubscriber {
-  void receiveMail(String message);
+  void receiveMail(String message);
 }
 
 // Concrete subscriber - UserMailbox
 class UserMailbox implements MailSubscriber {
-  private String email;
+  private String email;
 
-  public UserMailbox(String email) {
-    this.email = email;
-  }
+  public UserMailbox(String email) {
+    this.email = email;
+  }
 
-  @Override
-  public void receiveMail(String message) {
-    System.out.println("Mail received by " + email + ": " + message);
-  }
+  @Override
+  public void receiveMail(String message) {
+    System.out.println("Mail received by " + email + ": " + message);
+  }
 }
 
 // Subject interface
@@ -1640,62 +1640,62 @@ Usage -
 ```java
 // Strategy interface
 interface SortingStrategy {
-  void sort(int[] arr);
+  void sort(int[] arr);
 }
 
 // Concrete strategy - BubbleSort
 class BubbleSort implements SortingStrategy {
-  @Override
-  public void sort(int[] arr) {
-    System.out.println("Sorting array using Bubble Sort");
-    // Implementation of bubble sort algorithm
-  }
+  @Override
+  public void sort(int[] arr) {
+    System.out.println("Sorting array using Bubble Sort");
+    // Implementation of bubble sort algorithm
+  }
 }
 
 // Concrete strategy - QuickSort
 class QuickSort implements SortingStrategy {
-  @Override
-  public void sort(int[] arr) {
-    System.out.println("Sorting array using Quick Sort");
-    // Implementation of quick sort algorithm
-  }
+  @Override
+  public void sort(int[] arr) {
+    System.out.println("Sorting array using Quick Sort");
+    // Implementation of quick sort algorithm
+  }
 }
 
 // Context class - Sorter
 class Sorter {
-  private SortingStrategy strategy;
+  private SortingStrategy strategy;
 
-  public Sorter(SortingStrategy strategy) {
-    this.strategy = strategy;
-  }
+  public Sorter(SortingStrategy strategy) {
+    this.strategy = strategy;
+  }
 
-  public void setStrategy(SortingStrategy strategy) {
-    this.strategy = strategy;
-  }
+  public void setStrategy(SortingStrategy strategy) {
+    this.strategy = strategy;
+  }
 
-  public void performSort(int[] arr) {
-    strategy.sort(arr);
-  }
+  public void performSort(int[] arr) {
+    strategy.sort(arr);
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create a context with BubbleSort strategy
-    Sorter sorter = new Sorter(new BubbleSort());
+  public static void main(String[] args) {
+    // Create a context with BubbleSort strategy
+    Sorter sorter = new Sorter(new BubbleSort());
 
-    // Array to be sorted
-    int[] arr = {5, 3, 9, 1, 7};
+    // Array to be sorted
+    int[] arr = {5, 3, 9, 1, 7};
 
-    // Perform sorting using BubbleSort
-    sorter.performSort(arr);
+    // Perform sorting using BubbleSort
+    sorter.performSort(arr);
 
-    // Change the sorting strategy to QuickSort
-    sorter.setStrategy(new QuickSort());
+    // Change the sorting strategy to QuickSort
+    sorter.setStrategy(new QuickSort());
 
-    // Perform sorting using QuickSort
-    sorter.performSort(arr);
-  }
+    // Perform sorting using QuickSort
+    sorter.performSort(arr);
+  }
 }
 ```
 
@@ -1711,70 +1711,70 @@ Usage -
 ```java
 // Abstract class defining the template method
 abstract class Vehicle {
-  // Template method defining the algorithm for building a vehicle
-  public final void assembleVehicle() {
-    buildWheels();
-    installEngine();
-    addBody();
-    System.out.println("Vehicle assembly completed.");
+  // Template method defining the algorithm for building a vehicle
+  public final void assembleVehicle() {
+    buildWheels();
+    installEngine();
+    addBody();
+    System.out.println("Vehicle assembly completed.");
     // return new Vehicle(with all components);
-  }
+  }
 
-  // Abstract methods to be implemented by subclasses
-  protected abstract void buildWheels();
-  protected abstract void installEngine();
-  protected abstract void addBody();
+  // Abstract methods to be implemented by subclasses
+  protected abstract void buildWheels();
+  protected abstract void installEngine();
+  protected abstract void addBody();
 }
 
 // Concrete subclass implementing the template methods for a car
 class Car extends Vehicle {
-  @Override
-  protected void buildWheels() {
-    System.out.println("Building wheels for the car");
-  }
+  @Override
+  protected void buildWheels() {
+    System.out.println("Building wheels for the car");
+  }
 
-  @Override
-  protected void installEngine() {
-    System.out.println("Installing engine for the car");
-  }
+  @Override
+  protected void installEngine() {
+    System.out.println("Installing engine for the car");
+  }
 
-  @Override
-  protected void addBody() {
-    System.out.println("Adding body to the car");
-  }
+  @Override
+  protected void addBody() {
+    System.out.println("Adding body to the car");
+  }
 }
 
 // Concrete subclass implementing the template methods for a bike
 class Bike extends Vehicle {
-  @Override
-  protected void buildWheels() {
-    System.out.println("Building wheels for the bike");
-  }
+  @Override
+  protected void buildWheels() {
+    System.out.println("Building wheels for the bike");
+  }
 
-  @Override
-  protected void installEngine() {
-    System.out.println("Bikes don't have engines to install");
-  }
+  @Override
+  protected void installEngine() {
+    System.out.println("Bikes don't have engines to install");
+  }
 
-  @Override
-  protected void addBody() {
-    System.out.println("Adding body to the bike");
-  }
+  @Override
+  protected void addBody() {
+    System.out.println("Adding body to the bike");
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Assemble a car
-    Vehicle car = new Car();
-    car.assembleVehicle();
+  public static void main(String[] args) {
+    // Assemble a car
+    Vehicle car = new Car();
+    car.assembleVehicle();
 
-    System.out.println();
+    System.out.println();
 
-    // Assemble a bike
-    Vehicle bike = new Bike();
-    bike.assembleVehicle();
-  }
+    // Assemble a bike
+    Vehicle bike = new Bike();
+    bike.assembleVehicle();
+  }
 }
 ```
 
@@ -1789,67 +1789,67 @@ Usage -
 ```java
 // Element interface
 interface VehiclePart {
-  void accept(ShoppingVisitor visitor);
+  void accept(ShoppingVisitor visitor);
 }
 
 // Concrete element - Engine
 class Engine implements VehiclePart {
-  @Override
-  public void accept(ShoppingVisitor visitor) {
-    visitor.visit(this);
-  }
+  @Override
+  public void accept(ShoppingVisitor visitor) {
+    visitor.visit(this);
+  }
 }
 
 // Concrete element - Body
 class Body implements VehiclePart {
-  @Override
-  public void accept(ShoppingVisitor visitor) {
-    visitor.visit(this);
-  }
+  @Override
+  public void accept(ShoppingVisitor visitor) {
+    visitor.visit(this);
+  }
 }
 
 // Visitor interface
 interface ShoppingVisitor {
-  void visit(Engine engine);
-  void visit(Body body);
+  void visit(Engine engine);
+  void visit(Body body);
 }
 
 // Concrete visitor implementation
 class ShoppingVisitorImpl implements ShoppingVisitor {
-  private double totalPrice = 0;
+  private double totalPrice = 0;
 
-  @Override
-  public void visit(Engine engine) {
-    totalPrice += 5000; // Assume engine price
-  }
+  @Override
+  public void visit(Engine engine) {
+    totalPrice += 5000; // Assume engine price
+  }
 
-  @Override
-  public void visit(Body body) {
-    totalPrice += 10000; // Assume body price
-  }
+  @Override
+  public void visit(Body body) {
+    totalPrice += 10000; // Assume body price
+  }
 
-  public double getTotalPrice() {
-    return totalPrice;
-  }
+  public double getTotalPrice() {
+    return totalPrice;
+  }
 }
 
 // Client code
 public class Main {
-  public static void main(String[] args) {
-    // Create vehicle parts
-    VehiclePart engine = new Engine();
-    VehiclePart body = new Body();
+  public static void main(String[] args) {
+    // Create vehicle parts
+    VehiclePart engine = new Engine();
+    VehiclePart body = new Body();
 
-    // Create visitor
-    ShoppingVisitor shoppingVisitor = new ShoppingVisitorImpl();
+    // Create visitor
+    ShoppingVisitor shoppingVisitor = new ShoppingVisitorImpl();
 
-    // Accept visitor
-    engine.accept(shoppingVisitor);
-    body.accept(shoppingVisitor);
+    // Accept visitor
+    engine.accept(shoppingVisitor);
+    body.accept(shoppingVisitor);
 
-    // Get total price
-    double totalPrice = ((ShoppingVisitorImpl) shoppingVisitor).getTotalPrice();
-    System.out.println("Total price of vehicle parts: $" + totalPrice);
-  }
+    // Get total price
+    double totalPrice = ((ShoppingVisitorImpl) shoppingVisitor).getTotalPrice();
+    System.out.println("Total price of vehicle parts: $" + totalPrice);
+  }
 }
 ```
